@@ -18,7 +18,7 @@ def example_create_text_to_cad(user_prompt: str):
 
     result: Optional[Union[TextToCad, Error]] = create_text_to_cad.sync(
         client=client,
-        output_format=FileExportFormat.FBX,
+        output_format=FileExportFormat.STL,
         body=TextToCadCreateBody(
             prompt=user_prompt,  # Use the actual user input
         ),
@@ -33,11 +33,11 @@ def example_create_text_to_cad(user_prompt: str):
     else:
         # Handle success case
         print(f"Success: CAD file created with ID {result.id}")
-        # You might want to return or process the result further here
+        print(f"Success: CAD file created with outputs {result.outputs}")
 
 # --- FRONTEND ---
 st.title('Prompt to CAD File')
-user_input = st.text_input('What do you want to 3D Print?', '... a coaster')
+user_input = st.text_input('What do you want to 3D Print?')
 
 if st.button('Create CAD File'):
     # Call the function and capture the result
