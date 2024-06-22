@@ -2,13 +2,14 @@ import os
 import streamlit as st
 import time
 import numpy as np
-from pythreejs import *
-from IPython.display import display
 from kittycad.api.ai import create_text_to_cad, get_text_to_cad_model_for_user
 from kittycad.client import ClientFromEnv
 from kittycad.models.api_call_status import ApiCallStatus
 from kittycad.models.file_export_format import FileExportFormat
 from kittycad.models.text_to_cad_create_body import TextToCadCreateBody
+from stl import mesh as stl_mesh
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
 
 # Create our client.
 client = ClientFromEnv()
@@ -60,20 +61,20 @@ def prompt_to_cad(user_prompt: str):
         return file_path
 
 def display_stl(file_path):
-    with open(file_path, 'rb') as f:
-        stl_data = f.read()
+    # Load the STL file
+    stl_mesh_data = stl_mesh.Mesh.from_file(file_path)
 
-    geometry = BufferGeometry.from_stl(stl_data)
-    material = MeshStandardMaterial(color='gray', flatShading=True)
-    mesh = Mesh(geometry, material)
+    # Create a new plot
+    figure = plt.figure()
+    axes = figure.add_subplot(111, projection='3d')
 
-    camera = PerspectiveCamera(position=[3, 3, 3], aspect=1)
-    camera.lookAt([0, 0, 0])
+    # Extract vertices and faces
+    for vector in stl_mesh_data.vectors:
+        axes.plot([vector[0][0], vector[1][0]], [vector[0][1], vector[1][1]], [vector[0][2], vector[1][2]], color='b')
+        axes.plot([vector[1][0], vector[2][0]], [vector[1][1], vector[2][1]], [vector[1][2], vector[2][2]], color='b')
+        axes.plot([vector[2][0], vector[0][0]], [vector[2][1], vector[0][1]], [vector[2][2], vector[0][2]], color='b')
 
-    scene = Scene(children=[mesh, AmbientLight(intensity=0.5)])
-    renderer = Renderer(camera=camera, scene=scene, controls=[OrbitControls(controlling=camera)], width=600, height=400)
-
-    st.write(renderer)
+    st.pyplot(figure)
 
 # --- FRONTEND ---
 st.title('Prompt to CAD File')
@@ -86,3 +87,7 @@ if st.button('Create CAD File'):
     if file_path:
         st.success(f"File created: {file_path}")
         display_stl(file_path)
+else:
+    # Display a default STL file if no button is pressed
+    display_stl('/Users/theol/Documents/june22/generatedFiles/box-output.stl')
+
