@@ -1,3 +1,7 @@
 generatedFiles/rectangle-output.stl,rectangle
 generatedFiles/wide-output.stl,wide box
 generatedFiles/cup-output.stl,cup
+generatedFiles/dome-output.stl,dome
+generatedFiles/ball-output.stl,ball
+generatedFiles/small-output.stl,small box
+generatedFiles/${user_input}-output.stl,${user_input} with hollow inside and thin walls
