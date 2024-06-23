@@ -1,0 +1,2 @@
+generatedFiles/rectangle-output.stl,rectangle
+generatedFiles/wide-output.stl,wide box

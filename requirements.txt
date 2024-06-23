@@ -1,0 +1,5 @@
+streamlit==1.18.1
+kittycad
+numpy==1.23.5
+matplotlib==3.6.2
+numpy-stl==2.16.3
