@@ -1,5 +1,6 @@
 import streamlit as st
 
+print("checkpoint")
 # Set the app title
 st.title('My First Streamlit App')
 
