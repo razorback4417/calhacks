@@ -10,6 +10,7 @@ The Prompt to CAD File Generator is a tool designed to help individuals who are 
 - **STL File Viewer**: Visualize generated STL files directly within the application.
 - **Gallery**: Browse and search through a gallery of STL files created by other users.
 - **Download STL Files**: Download STL files for personal use or further modification.
+- **Oski Integration:** Integrate with Anthropic's latest model of Claude for a simple way to get assistance in your 3D modeling.
 
 ## Installation
 
