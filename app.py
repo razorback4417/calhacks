@@ -89,5 +89,5 @@ if st.button('Create CAD File'):
         display_stl(file_path)
 else:
     # Display a default STL file if no button is pressed
-    display_stl('/Users/theol/Documents/june22/generatedFiles/box-output.stl')
-
+    # display_stl('/Users/theol/Documents/june22/generatedFiles/box-output.stl')
+    pass
