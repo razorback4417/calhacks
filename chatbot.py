@@ -1,8 +1,6 @@
 import openai
 import os
 
-# openai.api_key = ""
-
 def chat_with_openai(prompt):
     try:
         # Create a chat completion with OpenAI API
