@@ -1,5 +1,4 @@
 import openai
-import os
 
 def chat_with_openai(prompt):
     try:
