@@ -9,6 +9,7 @@ from kittycad.models.file_export_format import FileExportFormat
 from kittycad.models.text_to_cad_create_body import TextToCadCreateBody
 from helper import display_stl  # Import the display_stl function
 
+client = ClientFromEnv()
 
 def prompt_to_cad(user_prompt: str):
     # Create the directory if it doesn't exist
