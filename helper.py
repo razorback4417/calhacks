@@ -5,11 +5,14 @@ import streamlit as st
 
 import os
 import time
+from dotenv import load_dotenv
 from kittycad.api.ai import create_text_to_cad, get_text_to_cad_model_for_user
 from kittycad.client import ClientFromEnv
 from kittycad.models.api_call_status import ApiCallStatus
 from kittycad.models.file_export_format import FileExportFormat
 from kittycad.models.text_to_cad_create_body import TextToCadCreateBody
+
+load_dotenv()
 
 def display_stl(file_path, scale=0.5):
     # Load the STL file

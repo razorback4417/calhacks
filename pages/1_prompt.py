@@ -1,6 +1,6 @@
 import streamlit as st
 from helper import display_stl, prompt_to_cad  # Import the display_stl and prompt_to_cad functions
-# from chatbot import chat_with_the_gpt
+from chatbot import get_response
 
 # Custom CSS for vertical line and input box color
 st.markdown(
@@ -76,16 +76,23 @@ with right_column:
 
     user_input = st.text_input("Hi, I am Oski! I was LITERALLY built to help you 😁", key="chat_input")
 
-    if st.button("Ask!", key="send_button"):
-        if user_input:
-            response = chat_with_the_gpt(user_input)
-            st.session_state['chat_history'].append((user_input, response))
+    if st.button("Ask!"):
+        if not user_input:
+            st.warning("Please enter a keyword before generating titles.", icon = "⚠️")
+        generated_content = get_response(user_input)
+        st.success("Titles generated successfully!")
+        st.text_area("", value=generated_content, height=300)
 
-    chat_history_container = st.container()
-    with chat_history_container:
-        for user_msg, bot_msg in st.session_state['chat_history']:
-            st.write(f"**User:** {user_msg}")
-            st.write(f"**Oski:** {bot_msg}")
+    # if st.button("Ask!", key="send_button"):
+    #     if user_input:
+    #         response = chat_with_the_gpt(user_input)
+    #         st.session_state['chat_history'].append((user_input, response))
+
+    # chat_history_container = st.container()
+    # with chat_history_container:
+    #     for user_msg, bot_msg in st.session_state['chat_history']:
+    #         st.write(f"**User:** {user_msg}")
+    #         st.write(f"**Oski:** {bot_msg}")
 
 # End of the split container
 st.markdown('</div>', unsafe_allow_html=True)

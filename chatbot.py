@@ -1,36 +1,50 @@
-import openai
+from dotenv import load_dotenv
+import anthropic
+import streamlit as st
 
-def chat_with_openai(prompt):
-    try:
-        # Create a chat completion with OpenAI API
-        response = openai.chat.completions.create(
-            model="gpt-3.5-turbo",
-            messages=[{"role": "user", "content": prompt}],
-        )
+load_dotenv()
 
-        # Extract the content of the message from the response
-        response_content = response.choices[0].message.content
+def get_response(user_content):
+    client = anthropic.Anthropic()
+    response = client.messages.create(
+        model="claude-3-opus-20240229",
+        max_tokens=1024,
+        system="Answer the following question. Keep it short and in simple terms. 1-2 sentences.",
+        messages=[{"role":"user", "content":user_content}],
+    )
+    return response.content[0].text
 
-        # Strip any leading or trailing whitespace from the response content
-        response_content_stripped = response_content.strip()
+# def chat_with_openai(prompt):
+#     try:
+#         # Create a chat completion with OpenAI API
+#         response = openai.chat.completions.create(
+#             model="gpt-3.5-turbo",
+#             messages=[{"role": "user", "content": prompt}],
+#         )
 
-        return response_content_stripped
+#         # Extract the content of the message from the response
+#         response_content = response.choices[0].message.content
 
-    except Exception as e:
-        print(f"An error occurred: {str(e)}")
-        return "Sorry, something went wrong. Please try again."
+#         # Strip any leading or trailing whitespace from the response content
+#         response_content_stripped = response_content.strip()
+
+#         return response_content_stripped
+
+#     except Exception as e:
+#         print(f"An error occurred: {str(e)}")
+#         return "Sorry, something went wrong. Please try again."
 
 
-if __name__ == "__main__":
-    while True:
-        user_input = input("ASK ANYTHING >> ")
+# if __name__ == "__main__":
+#     while True:
+#         user_input = input("ASK ANYTHING >> ")
 
-        if user_input.lower() in ["bye", "quit", "exit"]:
-            break
+#         if user_input.lower() in ["bye", "quit", "exit"]:
+#             break
 
-        # Get a response from the OpenAI model
-        response = chat_with_openai(user_input)
-        print("RESPONSE: ", response)
+#         # Get a response from the OpenAI model
+#         response = chat_with_openai(user_input)
+#         print("RESPONSE: ", response)
 
 # client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
