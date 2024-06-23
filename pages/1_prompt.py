@@ -78,9 +78,9 @@ with right_column:
 
     if st.button("Ask!"):
         if not user_input:
-            st.warning("Please enter a keyword before generating titles.", icon = "⚠️")
+            st.warning("Please enter a question before clicking Ask.", icon = "⚠️")
         generated_content = get_response(user_input)
-        st.success("Titles generated successfully!")
+        # st.success("Titles generated successfully!")
         st.text_area("", value=generated_content, height=300)
 
     # if st.button("Ask!", key="send_button"):
