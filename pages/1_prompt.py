@@ -47,10 +47,21 @@ with left_column:
     st.subheader("Lets get started! 🚀")
     st.write("Here you can interact with our system and get an 3D printable file based on your input.")
 
+    printer_options = [
+        "Bambu Lab P1P",
+        "Mingda Magician X2",
+        "Creality Ender-5 S1",
+        "Snapmaker J1",
+        "Anycubic Kobra Plus",
+        "Elegoo Neptune 4 Pro"
+    ]
+    selected_printer = st.selectbox("Select your 3D Printer:", printer_options)
+
+
     user_input = st.text_input("What do you want to print...")
 
     if st.button("Print!"):
-        file_path = prompt_to_cad('${user_input} with hollow inside and thin walls')
+        file_path = prompt_to_cad(user_input)
 
         if file_path:
             st.success(f"File created: {file_path}")
