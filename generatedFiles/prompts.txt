@@ -1,2 +1,3 @@
 generatedFiles/rectangle-output.stl,rectangle
 generatedFiles/wide-output.stl,wide box
+generatedFiles/small-output.stl,small triangle

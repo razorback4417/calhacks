@@ -2,7 +2,7 @@
 
 ## Overview
 
-The Prompt to CAD File Generator is a tool designed to help individuals who are new to Computer-Aided Design (CAD) easily create entry-level designs. By simply providing a text prompt, users can generate 3D models in STL format. Additionally, the tool features a gallery where users can view and download STL files created by others, fostering a community of shared designs and inspiration.
+The Prompt to CAD File Generator is a tool designed to help people who are new to Computer-Aided Design (CAD) easily create entry-level designs. By simply providing a text prompt, users can generate 3D models in STL format. Additionally, the tool features a gallery where users can view and download STL files created by others, fostering a community of shared designs and inspiration.
 
 ## Features
 
