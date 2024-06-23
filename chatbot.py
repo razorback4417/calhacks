@@ -1,7 +1,7 @@
 import openai
 import os
 
-openai.api_key = ""
+# openai.api_key = ""
 
 def chat_with_openai(prompt):
     try:
